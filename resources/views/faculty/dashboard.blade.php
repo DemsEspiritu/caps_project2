@@ -49,19 +49,18 @@
 
 
                         <!-- start pages dropdown -->
-                    <li class="sidebar-item">
-                        <a href="" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse" aria-expanded="false">
-                        <i class="fa-solid fa-pager pe-2"></i>
-                            Managed School
-                        </a>
-
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-pager pe-2"></i>
+                                Managed School
+                            </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="/faculty/subject/list" class="sidebar-link">
-                                    <i class="fa-solid fa-layer-group pe-2"></i>
+                        <li class="sidebar-item">
+                            <a href="/faculty/subject/list" class="sidebar-link">
+                                <i class="fa-solid fa-layer-group pe-2"></i>
                                  Subject
                                 </a>
-                            </li>
+                        </li>
 
                              <li class="sidebar-item">
                                 <a href="/faculty/school_year/list" class="sidebar-link">
@@ -148,14 +147,6 @@
                          </a>   
                     </li> 
 
-
-
-
-
-
-
-
-
                     <li class="sidebar-header">
                         USER ACCOUNT
                     </li> 
@@ -183,10 +174,7 @@
                         </ul>
 
                     </li>
-                    <!-- end pages dropdown -->
-
-                          
-
+                    
                 </ul>
                 <!-- EEND UL -->
 
@@ -221,36 +209,95 @@
 
             <!-- ========= Main content section of dashboard ======= -->
 
-            <main class="content px-3 py-2">
+            <main class=" pt-2">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <h4>Dashboard</h4>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+         
+          <div class="col-md-3 mb-3">
+            <div class="card bg-warning text-dark h-100">
+              <div class="card-body py-5">
+                <h4>Teacher</h4>
+                <h1 class="total text-center">{{ $totalTeacher}} <i class="fa-solid fa-chalkboard-user"></i></h1>
+                </div>
+              <div class="card-footer d-flex">
+                View Details
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-success text-white h-100">
+              <div class="card-body py-5">
+                <h4>Faculty</h4>
+                <h1 class="total text-center">{{ $totalFaculty}} <i class="fa-solid fa-people-line "></i></h1>
+              </div>
+              <div class="card-footer d-flex">
+                View Details
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-danger text-white h-100">
+              <div class="card-body py-5">
+                <h4>Student</h4>
+                <h1 class="total text-center">{{ $totalStudent}} <i class="fa-solid fa-users"></i></h1>
+              </div>
+              <div class="card-footer d-flex">
+                View Details
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
 
-                <div class="container-fluid"> <!--   this is form container fluid -->
-                    <div class="mb-3">
-                        <h4>Admin Dashboard</h4>
-                    </div>
-                
-                    <div class="row"><!--   this is form row fluid -->
-                        <div class="col-12 col-md-6 d-flex">
-                            <div class="card flex-fill border-0 illustration">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-9">
-                                        
-           
+</div>
+          <hr>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--   this is form row fluid -->
-           
-
-
-
-
-
-
-            </main>
+          <div class="row justify-content-center">
+          <div class="col-md-3 mb-3">
+            <div class="card bg-secondary text-white h-100">
+              <div class="card-body py-5">
+                <h4>Request Form</h4>
+                <h1 class="total text-center">{{ $totalStudent}} <i class="fa-solid fa-newspaper"></i></h1>
+              </div>
+              <div class="card-footer d-flex">
+                View Details
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-info text-white h-100">
+              <div class="card-body py-5">
+                <h4>Enroll</h4>
+                <h1 class="total text-center">{{ $totalStudent}} <i class="fa-solid fa-book-open-reader fa-lg"></i></h1>
+              </div>
+              <div class="card-footer d-flex">
+                View Details
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+     
+      </div>
+    </main>
 
             <!-- ========= light and dark mode toggle button ======= -->
 
