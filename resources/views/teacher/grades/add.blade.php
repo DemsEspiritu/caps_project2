@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -115,10 +117,7 @@
                             <br>
                             <span>LRN:  {{$data['getStudentProfile']->lrn}}</span>  
                             <br>
-                            <span>Class:  {{$data['getStudentProfile']->class_name}}</span>  
-                            <br>
-                            <span>Section:  {{$data['getStudentProfile']->class_section}}</span> 
-
+                        
                             
 
                 

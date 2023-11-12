@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -101,12 +103,7 @@
                     </li>
 
 
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
+
                             
                         </ul>
 
@@ -134,12 +131,6 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
 
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
@@ -353,10 +344,6 @@
                     <input type="text" name="father_phone" value="{{ ($enroll->father_phone)  }} " required class="form-control"l">
                     <div style="color: red;">{{old('father_phone') }} {{$errors->first('father_phone')}} </div>
                   </div>
-                  
-
-
-                
 
                   <hr>
 
@@ -365,11 +352,11 @@
                             <select class="form-select" name="class_id"  value="{{ ($enroll->name)  }} ">
                             <option value="">--Select Class--</option>
                                 @foreach($enroll ['getClass'] as $class)
-                                <option value="{{ $class->class_id }}">{{ $class->name }} {{ $class->section }}</option>
+                                <option value="{{ $class->class_id }}">{{ $class->name }} Section-{{ $class->section }}</option>
                                 @endforeach
                              </select>
                     <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span> 
-</div>
+                </div>
 
 
 
@@ -378,7 +365,7 @@
                             <select class="form-select" name="school_year_id" value="{{ ($enroll->school_year_id)  }} ">
                             <option value="">--Select School Year--</option>
                                 @foreach($enroll ['getSchoolYearForAssign'] as $class)
-                                <option value="{{ $class->school_year_id }}">{{ $class->year_name }}</option>
+                                <option value="{{ $class->school_year_id }}">{{ $class->year_name }} </option>
                                 @endforeach
                             </select>
                     <span style="color:red; font-size:10px;">@error('type'){{ $message}} @enderror</span>
@@ -392,8 +379,8 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Update</button>
-                  <a href="{{ url('faculty/enroll/list') }}" class="btn btn-danger">Cancel</a>
-                  <a href="{{ url('faculty/enroll/accept'.$enroll->id) }}" class="btn btn-success"><i class="fa-solid fa-check fa-2xs p-1"></i>Approved</a>
+                  <a href="{{ url('faculty/enroll/accept'.$enroll->id) }}" class="btn btn-success btn-sm" type="submit" ><i class="fa-solid fa-check fa-2xs p-1"></i>Approved</a>
+                  <a href="{{ url('faculty/enroll/list') }}" class="btn btn-danger">Back</a>
                 </div>
               </form>
 

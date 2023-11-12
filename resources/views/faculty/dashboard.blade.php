@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -41,7 +43,7 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="/faculty/dashboard" class="sidebar-link">
+                        <a href="/faculty/dashboard?schoolYear=2022-2024" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
                                Dashboard
                          </a>   
@@ -84,7 +86,7 @@
                         ASSIGN
                     </li> 
 
- <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a href="" class="sidebar-link collapsed" data-bs-target="#assign" data-bs-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-pager pe-2"></i>
                             Assign 
@@ -100,12 +102,6 @@
                     </li>
 
 
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
                             
                         </ul>
 
@@ -133,12 +129,7 @@
                         RECORD
                     </li>
 
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
+
 
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
@@ -190,10 +181,12 @@
                 </button>
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
+                    <span style="margin:15px;"><a href="#"><i class="fa-regular fa-bell fa-2xl"></i></a></span>
                         <li class="nav-item dropdown ">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                            <span style="color:black;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
-                <img src="{{asset('assets/img/user.png')}}" class="avatar img-fluid rounded" alt="">
+                            
+                              <span style="color:black;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
+                              <img src="{{asset('assets/img/user.png')}}" class="avatar img-fluid rounded" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="{{ url('logout') }}" class="dropdown-item">LogOut</a>
@@ -209,95 +202,36 @@
 
             <!-- ========= Main content section of dashboard ======= -->
 
-            <main class=" pt-2">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-md-12">
-            <h4>Dashboard</h4>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-         
-          <div class="col-md-3 mb-3">
-            <div class="card bg-warning text-dark h-100">
-              <div class="card-body py-5">
-                <h4>Teacher</h4>
-                <h1 class="total text-center">{{ $totalTeacher}} <i class="fa-solid fa-chalkboard-user"></i></h1>
-                </div>
-              <div class="card-footer d-flex">
-                View Details
-                <span class="ms-auto">
-                  <i class="bi bi-chevron-right"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <div class="card bg-success text-white h-100">
-              <div class="card-body py-5">
-                <h4>Faculty</h4>
-                <h1 class="total text-center">{{ $totalFaculty}} <i class="fa-solid fa-people-line "></i></h1>
-              </div>
-              <div class="card-footer d-flex">
-                View Details
-                <span class="ms-auto">
-                  <i class="bi bi-chevron-right"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <div class="card bg-danger text-white h-100">
-              <div class="card-body py-5">
-                <h4>Student</h4>
-                <h1 class="total text-center">{{ $totalStudent}} <i class="fa-solid fa-users"></i></h1>
-              </div>
-              <div class="card-footer d-flex">
-                View Details
-                <span class="ms-auto">
-                  <i class="bi bi-chevron-right"></i>
-                </span>
-              </div>
-            </div>
-          </div>
+            <main class="content px-3 py-2">
 
-</div>
-          <hr>
+                <div class="container-fluid"> <!--   this is form container fluid -->
+                    <div class="mb-3">
+                        <h4>Admin Dashboard</h4>
+                    </div>
+                
+                    <div class="row"><!--   this is form row fluid -->
+                        <div class="col-12 col-md-6 d-flex">
+                            <div class="card flex-fill border-0 illustration">
+                                <div class="card-body p-0 d-flex flex-fill">
+                                    <div class="row g-0 w-100">
+                                        <div class="col-9">
+                                        
+           
 
-          <div class="row justify-content-center">
-          <div class="col-md-3 mb-3">
-            <div class="card bg-secondary text-white h-100">
-              <div class="card-body py-5">
-                <h4>Request Form</h4>
-                <h1 class="total text-center">{{ $totalStudent}} <i class="fa-solid fa-newspaper"></i></h1>
-              </div>
-              <div class="card-footer d-flex">
-                View Details
-                <span class="ms-auto">
-                  <i class="bi bi-chevron-right"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <div class="card bg-info text-white h-100">
-              <div class="card-body py-5">
-                <h4>Enroll</h4>
-                <h1 class="total text-center">{{ $totalStudent}} <i class="fa-solid fa-book-open-reader fa-lg"></i></h1>
-              </div>
-              <div class="card-footer d-flex">
-                View Details
-                <span class="ms-auto">
-                  <i class="bi bi-chevron-right"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-       
-     
-      </div>
-    </main>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--   this is form row fluid -->
+           
+
+
+
+
+
+
+            </main>
 
             <!-- ========= light and dark mode toggle button ======= -->
 
@@ -306,27 +240,7 @@
                 <i class="fa-regular fa-sun"></i>
             </a>
 
-            <!-- ========= footer section of dashboard ======= -->
-<!-- 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6">
-                            <p class="mb-0">
-                                <a href="#" class="text-muted"></a>
-                                <strong>Masoli High School Portal</strong>
-                            </p>
-                        </div>
-                        <div class="col-6 text-muted">
-                            <ul class="col-6 text-end">
-                                <li class="list-inline-item">
 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
@@ -335,6 +249,14 @@
     <script src="{{asset('assets/js/try.js')}}"></script>
    
     <script src="{{asset('assets/js/script.js')}}"></script>
+    <script>
+
+      function setQuery(elem){
+        
+        document.location.href=document.location.href.replace(/=[A-Za-z0-9]+-[A-Za-z0-9]+/,`=${elem.options[elem.selectedIndex].text}`);
+         
+      }
+    </script>
 </body>
 
 </html>

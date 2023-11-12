@@ -6,7 +6,7 @@
 
 <form action="" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
-    <div class="modal fade text-left" id="ModalEdit{{$student->student_profile_id}}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade text-left" id="ModalEdit{{$student->id}}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -62,8 +62,27 @@
                             <div class="col-5">
                                   <label style="font-weight: bold;">Grade: {{$student->grade}}</label><p></p>
                             </div>
-                      
-                                  
+
+                            <hr>
+                            <h6>Parents Information</h6>
+                        
+                            <div class="col-5">
+                                  <label style="font-weight: bold;">Mother Name: {{$student->mother_name}}</label><p></p>
+                            </div>
+                            
+                            <div class="col-5">
+                                  <label style="font-weight: bold;">Phone: {{$student->mother_phone}}</label><p></p>
+                            </div>
+
+                            <div class="col-5">
+                                  <label style="font-weight: bold;">Father Name: {{$student->father_name}}</label><p></p>
+                            </div>
+
+                            <div class="col-5">
+                                  <label style="font-weight: bold;">Phone: {{$student->father_phone}}</label><p></p>
+                            </div>
+
+                            
 
                 
                            </div>

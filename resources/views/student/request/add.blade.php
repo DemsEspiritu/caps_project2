@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -40,20 +42,38 @@
                         STUDENT SIDEBAR
                     </li>
 
-                     <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a href="/student/request/myrequest" class="sidebar-link">
-                        <<i class="fa-solid fa-paperclip pe-2"></i>
+                        <i class="fa-solid fa-file pe-2"></i>
                                 Request Documents
                          </a>   
                     </li>
 
                      <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                        <span class="me-2"><i class="fa-solid fa-people-group pe-2"></i>
-                               My Grades
+                        <a href="/student/grades/mygrades" class="sidebar-link">
+                        <span class="me-2">
+                        <i class="fa-solid fa-newspaper pe-2"></i>
+                            My Grades
                          </a>   
                     </li> 
 
+                    </li>
+
+                    <li class="sidebar-item">
+                    <a href="/student/subject/list" class="sidebar-link">
+                    <span class="me-2">
+                    <i class="fa-solid fa-address-book pe-2"></i>
+                            My Subject
+                        </a>   
+                    </li> 
+
+                    <li class="sidebar-item">
+                    <a href="/student/account" class="sidebar-link">
+                    <span class="me-2">
+                    <i class="fa-solid fa-user pe-2"></i>
+                            My Account
+                        </a>   
+                    </li> 
                 </ul>
                 <!-- EEND UL -->
 
@@ -114,7 +134,7 @@
                   
                 </div> <!--   this is form container fluid -->
 
-                <form action="" method="post" >
+            <form action="" method="post" >
               {{ csrf_field() }}
                 <div class="card-body">
                     <div class="row">
@@ -128,15 +148,6 @@
                           </select>
                     </div>
 
-                    <div class="form-group col-md-3">
-                    <label>Input Number to Recieve Confirmation</label>
-                            <input type="text" name="phone_number" class="form-control" placeholder="Phone Number" value="{{old('phone_number')}}">
-                          <span style="color:red; font-size:10px;">@error('phone'){{ $message}} @enderror</span> 
-                    </div>
-
-
-
-                
                     <div class="form-group col-md-3">
                 
                       <button class="btn btn-primary" type="submit" style="margin-top:24px;">Submit</button>

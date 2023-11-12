@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -42,16 +44,35 @@
 
                      <li class="sidebar-item">
                         <a href="/student/request/myrequest" class="sidebar-link">
-                        <<i class="fa-solid fa-paperclip pe-2"></i>
+                        <i class="fa-solid fa-file pe-2"></i>
                                 Request Documents
                          </a>   
                     </li>
 
                      <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                        <span class="me-2"><i class="fa-solid fa-people-group pe-2"></i>
-                               My Grades
+                        <a href="/student/grades/mygrades" class="sidebar-link">
+                        <span class="me-2">
+                        <i class="fa-solid fa-newspaper pe-2"></i>
+                            My Grades
                          </a>   
+                    </li> 
+
+                    </li>
+
+                    <li class="sidebar-item">
+                    <a href="/student/subject/list" class="sidebar-link">
+                    <span class="me-2">
+                    <i class="fa-solid fa-address-book pe-2"></i>
+                            My Subject
+                        </a>   
+                    </li> 
+
+                    <li class="sidebar-item">
+                    <a href="/student/account" class="sidebar-link">
+                    <span class="me-2">
+                    <i class="fa-solid fa-user pe-2"></i>
+                            My Account
+                        </a>   
                     </li> 
 
                 </ul>
@@ -71,7 +92,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown ">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                            <span style="color:black;font-weight:bold; margin-right:10px;">{{Auth::user()->name}}</span>
+                            <span style="color:black;font-weight:bold; margin-right:10px;">{{Auth::user()->name}} {{Auth::user()->last_name}}</span>
                 <img src="{{asset('assets/img/user.png')}}" class="avatar img-fluid rounded" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -126,27 +147,7 @@
                 <i class="fa-regular fa-sun"></i>
             </a>
 
-            <!-- ========= footer section of dashboard ======= -->
-<!-- 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6">
-                            <p class="mb-0">
-                                <a href="#" class="text-muted"></a>
-                                <strong>Masoli High School Portal</strong>
-                            </p>
-                        </div>
-                        <div class="col-6 text-muted">
-                            <ul class="col-6 text-end">
-                                <li class="list-inline-item">
 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>

@@ -30,7 +30,9 @@
                         <a href="#">Masoli High School</a>
                     </div>
                 <!-- ======= Navigation links for sidebar ======== -->
-
+                <div class="sidebar-img-logo">
+                    <img src="{{asset('assets/img/school-logo.png')}}">
+                </div>
                 <!-- Start Ul -->
                 <ul class="sidebar-nav">
                         <!-- SIDEBAR ITEM -->
@@ -101,12 +103,7 @@
                     </li>
 
 
-                    <li class="sidebar-item">
-                        <a href="/faculty/assign_class_teacher/list" class="sidebar-link">
-                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
-                               Assign Teacher Class
-                         </a>   
-                    </li>
+                  
                             
                         </ul>
 
@@ -133,13 +130,6 @@
                     <li class="sidebar-header">
                         RECORD
                     </li>
-
-                     <li class="sidebar-item">
-                        <a href="/faculty/grades/list" class="sidebar-link">
-                            <i class="fa-solid fa-file-lines pe-2"></i>
-                               Academic Records
-                         </a>   
-                    </li> 
 
                     <li class="sidebar-item">
                         <a href="/faculty/student/list" class="sidebar-link">
@@ -264,7 +254,7 @@
             </form>
                 </div> <!--   this is form container fluid -->
 
-                <div class="container-fluid">
+                <div class="container-fluid mt-6 p-3">
 
                             <table class="table table-striped">
                             <thead>

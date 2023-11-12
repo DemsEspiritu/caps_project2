@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Unique;
 use Symfony\Contracts\Service\Attribute\Required;
 use Auth;
+use App\Models\ClassSubjectModel;
+use App\Models\TotalGrades;
+
 
 
 class StudentController extends Controller
@@ -21,6 +24,7 @@ class StudentController extends Controller
     public function list()
     {    
       $data['getStudent'] = User::getStudent();
+      
       return view('faculty.student_user.list',compact("data"));
          
     }
@@ -119,15 +123,6 @@ class StudentController extends Controller
 
 
 
-    public function MyStudent()
-    { 
-
-
-      $data['getTeacherStudent'] = User::getTeacherStudent(Auth::user()->id);
-
-     
-      return view('teacher.my_student.list', $data);
-    }
 
     
 
@@ -146,6 +141,45 @@ class StudentController extends Controller
       }
 
     }
+ /////////////////////
 
-   
+          
+          // public function MySubject()
+          // {
+          //      $data['getRecord'] = ClassSubjectModel::MySubject(Auth::user()->id);
+
+          // // dd($data['getRecord']->toArray());
+
+          //      return view('student.subject.list', $data);
+          // }
+
+          public function MySubject()
+          {
+              $data['getRecord'] = TotalGrades::getMyGrades(Auth::user()->id);
+      
+             // dd($data['getRecord']->toArray());
+      
+              return view('student.subject.list', $data);
+          }
+
+
+          public function liststudent()
+          {    
+            $data['getStudentProfile'] = User::getAllStudent();
+      
+            return view('faculty.student.list',compact("data"));
+               
+          }
+
+          ///teacher side my student list
+          
+               public function MyStudent()
+               { 
+
+                    
+                    $data['getTeacherStudent'] = User::getTeacherStudent(Auth::user()->id);
+                    
+                    
+                    return view('teacher.my_student.list', $data);
+               }
 }
