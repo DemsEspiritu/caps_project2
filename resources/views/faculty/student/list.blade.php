@@ -236,6 +236,8 @@
                       <label>Name</label>
                       <input type="text" name="name" value="{{ Request::get('name') }}" class="form-control" placeholder="Name">
                     </div>
+
+                    
 <!-- 
                     <div class="form-group col-md-3">
                       <label>Grade</label>

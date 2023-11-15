@@ -155,7 +155,7 @@ class EnrollController extends Controller
          
    
          
-         return redirect()->back();
+         return redirect('faculty/enroll/list');
     }
 
 

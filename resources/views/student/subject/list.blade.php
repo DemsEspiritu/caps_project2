@@ -140,6 +140,7 @@
                 <th class="text-center" scope="col">Subject</th>
                 <th class="text-center" scope="col">Teacher</th>
                 <th class="text-center" scope="col">School Year</th>
+                <th class="text-center" scope="col">Time</th>
           
           
             </tr>
@@ -151,6 +152,7 @@
                 <td class="text-center">{{ $value->subject_name}}</td>
                 <td class="text-center">{{ $value->teacher_name}}</td>
                 <td class="text-center">{{ $value->year_name}}</td>
+                <td class="text-center">{{ date('H:i A', strtotime($value->fromTime)) }}--{{ date('H:i A', strtotime($value->toTime)) }}</td>
             </tr>
             @endforeach
      

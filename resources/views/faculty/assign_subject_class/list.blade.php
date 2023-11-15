@@ -43,7 +43,7 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="/faculty/dashboard" class="sidebar-link">
+                        <a href="/faculty/dashboard?schoolYear=2022-2023" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
                                Dashboard
                          </a>   
@@ -243,7 +243,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-1">
                       <label>Section</label>
                       <select class="form-select" name="class_section" >
                             <option value="{{ Request::get('class_section') }}">Section</option>
@@ -257,14 +257,14 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-1">
                       <label>Subject</label>
-                      <input type="text" name="subject_name" value="{{ Request::get('subject_name') }}" class="form-control" placeholder="Subject Name">
+                      <input type="text" name="subject_name" value="{{ Request::get('subject_name') }}" class="form-control">
                     </div>
 
                     <div class="form-group col-md-2">
                       <label>Teacher</label>
-                      <input type="text" name="teacher_name" value="{{ Request::get('teacher_name') }}" class="form-control" placeholder="Teacher Name">
+                      <input type="text" name="teacher_name" value="{{ Request::get('teacher_name') }}" class="form-control">
                     </div>
 
 
@@ -294,7 +294,7 @@
               </form>
                 </div> <!--   this is form container fluid -->
 
-                <div class="container-fluid mt-5">
+                <div class="container-fluid mt-4">
 
                     <table class="table table-striped">
                         <thead>
@@ -304,18 +304,21 @@
                       <th class="text-center">Subject</th>
                       <th class="text-center">Teacher</th>
                       <th class="text-center">School Year</th>
+                      <th class="text-center">Schedule</th>
+                      <th class="text-center">Time</th>
                       <th class="text-center">Created By</th>
                     </tr>
                   </thead>
                   <tbody>
                       @foreach($classes as $value)  
                     <tr> 
-                    
                       <td class="text-center">{{ $value->class_name}}</td>
                       <td class="text-center">{{ $value->section_of_class}}</td>
                       <td class="text-center">{{ $value->subject_name}}</td>
                       <td class="text-center">{{ $value->teacher_name}}</td>
                       <td class="text-center">{{ $value->school_year_name}}</td>
+                      <td class="text-center">{{ $value->schedule}}</td>
+                      <td class="text-center">{{ date('H:i A', strtotime($value->fromTime)) }}--{{ date('H:i A', strtotime($value->toTime)) }}</td>
                       <td class="text-center">
                         <a href="{{ url('faculty/assign_subject_class/edit'.$value->id ) }}" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square p-1" style="color: #fafafa;"></i>Edit</a>
                         <a href="{{ url('faculty/assign_subject_class/remove'.$value->id ) }}" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can p-1" style="color: #fafafa;"></i>Delete</a>

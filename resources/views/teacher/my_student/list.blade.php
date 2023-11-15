@@ -94,7 +94,7 @@
 
                 <div class="container-fluid"> <!--   this is form container fluid -->
                     <div class="mb-3">
-                        <h4>My Student</h4>
+                        <h4>My Students</h4>
                     </div>
                 
                     <div class="row"><!--   this is form row fluid -->
@@ -112,8 +112,40 @@
                             </div>
                         </div>
                     </div><!--   this is form row fluid -->
+
+                    <form action="" method="get" >
+                <div class="card-body">
+                    <div class="row">
+
+                    <div class="form-group col-md-3">
+                      <label>LRN</label>
+                      <input type="text" name="lrn" value="{{ Request::get('lrn') }}" class="form-control" placeholder="LRN Number">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                      <label>Name</label>
+                      <input type="text" name="name" value="{{ Request::get('name') }}" class="form-control" placeholder="Name">
+                    </div>
                     
-                <div class="container-fluid">
+
+                    <div class="form-group col-md-3">
+                      <label>Class Name</label>
+                      <input type="text" name="name" value="{{ Request::get('class_name') }}" class="form-control" placeholder="Name">
+                    </div>
+                
+                    <div class="form-group col-md-3">
+                
+                      <button class="btn btn-primary" type="submit" style="margin-top:24px;">Search</button>
+                      <a href="{{ url('teacher/MyStudent/list')}}" class="btn btn-success" style="margin-top:24px;">Reset</a>
+                    </div>
+
+                  </div>
+                <!-- /.card-body -->
+                </div>
+              </form>
+                </div> <!--   this is form container fluid -->
+                    
+                <div class="container-fluid mt-2">
                     <table class="table table-striped">
                      <thead>
                     <tr>

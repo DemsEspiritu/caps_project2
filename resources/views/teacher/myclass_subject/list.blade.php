@@ -94,13 +94,13 @@
 
                 <div class="container-fluid"> <!--   this is form container fluid -->
                     <div class="mb-3">
-                        <h4>My Subject</h4>
+                        <h4>My Class Subject</h4>
                     </div>
                 
                     <div class="row"><!--   this is form row fluid -->
                         <div class="col-12 col-md-6 d-flex">
                             <div class="card flex-fill border-0 illustration">
-                                <div class="card-body p-0 d-flex flex-fill">
+                                <div class="card-body p-0 d-flex flex-fill">php artisan
                                     <div class="row g-0 w-100">
                                         <div class="col-9">
                                         
@@ -122,6 +122,8 @@
                                 <th class="text-center" scope="col">Class Section</th>
                                 <th class="text-center" scope="col">Subject Name</th>
                                 <th class="text-center" scope="col">Subject Type</th>
+                                <th class="text-center" scope="col">Schedule</th>
+                                <th class="text-center" scope="col">Day</th>
                           
                             </tr>
                         </thead>
@@ -133,6 +135,8 @@
                                 <td class="text-center">{{ $value->section_of_class }}</td>
                                 <td class="text-center">{{ $value->subject_name }}</td>
                                 <td class="text-center">{{ $value->subject_type }}</td>
+                                <td class="text-center">{{ date('H:i A', strtotime($value->fromTime)) }}--{{ date('H:i A', strtotime($value->toTime)) }}</td>
+                                <td class="text-center">{{ $value->schedule}}</td>
                             </tr>
                             @endforeach
                         </tbody>

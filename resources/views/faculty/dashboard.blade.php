@@ -51,18 +51,19 @@
 
 
                         <!-- start pages dropdown -->
-                        <li class="sidebar-item">
-                            <a href="" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-pager pe-2"></i>
-                                Managed School
-                            </a>
+                    <li class="sidebar-item">
+                        <a href="" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse" aria-expanded="false">
+                        <i class="fa-solid fa-pager pe-2"></i>
+                            Managed School
+                        </a>
+
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="/faculty/subject/list" class="sidebar-link">
-                                <i class="fa-solid fa-layer-group pe-2"></i>
+                            <li class="sidebar-item">
+                                <a href="/faculty/subject/list" class="sidebar-link">
+                                    <i class="fa-solid fa-layer-group pe-2"></i>
                                  Subject
                                 </a>
-                        </li>
+                            </li>
 
                              <li class="sidebar-item">
                                 <a href="/faculty/school_year/list" class="sidebar-link">
@@ -165,7 +166,10 @@
                         </ul>
 
                     </li>
-                    
+                    <!-- end pages dropdown -->
+
+                          
+
                 </ul>
                 <!-- EEND UL -->
 
@@ -202,36 +206,171 @@
 
             <!-- ========= Main content section of dashboard ======= -->
 
-            <main class="content px-3 py-2">
-
-                <div class="container-fluid"> <!--   this is form container fluid -->
-                    <div class="mb-3">
-                        <h4>Admin Dashboard</h4>
-                    </div>
+            <main class=" pt-2">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Dashboard</h4>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-3 mb-3">
+            <div class="card bg-warning text-dark h-100">
+              <div class="card-body py-5">
+                <h4>Teacher</h4>
+                <h1 class="total text-center">{{ $totalTeacher}} <i class="fa-solid fa-chalkboard-user"></i></h1>
+                </div>
+              <div class="card-footer d-flex">
+             
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-success text-white h-100">
+              <div class="card-body py-5">
+                <h4>Admin</h4>
+                <h1 class="total text-center">{{ $totalFaculty}} <i class="fa-solid fa-people-line "></i></h1>
+              </div>
+              <div class="card-footer d-flex">
                 
-                    <div class="row"><!--   this is form row fluid -->
-                        <div class="col-12 col-md-6 d-flex">
-                            <div class="card flex-fill border-0 illustration">
-                                <div class="card-body p-0 d-flex flex-fill">
-                                    <div class="row g-0 w-100">
-                                        <div class="col-9">
-                                        
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-danger text-white h-100">
+              <div class="card-body py-5">
+                <h4>Student</h4>
+                <h1 class="total text-center">{{$totalStudent}} <i class="fa-solid fa-users"></i></h1>
+              </div>
+              <div class="card-footer d-flex">
            
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--   this is form row fluid -->
-           
-
-
-
-
-
-
-            </main>
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="container-fluid">
+          <h4>Set Date for Grading:</h4>
+         <form action="{{url('faculty/setgrading')}}" method="POST">
+          
+          @csrf
+          <div class="rows mb-5">
+            <label class="mr-2">School Year:<label>
+            <select name="school_year"
+              onchange="setQuery(this)"
+            >
+            @foreach($sy as $schoolYear)
+              <option value="{{$schoolYear->school_year_id}}"
+                @if(request()->get('schoolYear')==$schoolYear->year_name)
+                  selected
+                @endif
+              >{{$schoolYear->year_name}}</option>
+            @endforeach
+            </select>
+          </div>
+         <div class="cols mb-5">
+            <label>First Grading</label>
+            <div
+            class="rows"
+            >
+            <label>From:</label>
+            <input name="firstgrading[]" type="date"
+              class="form-control"
+              @if(!empty($newData) && $newData[0][0]!=null)
+                value="{{$newData[0][0]}}"
+              @endif
+            />
+            <label>To:</label>
+            <input name="firstgrading[]" type="date"
+            class="form-control"
+            @if( !empty($newData) && $newData[0][1]!=null)
+             value="{{$newData[0][1]}}"
+            @endif
+            />
+          </div>
+            
+            
+          </div>
+          <div  class="col mb-5">
+          <label>Second Grading</label>
+            <div
+            class="rows"
+            >
+            <label>From:</label>
+            <input name="secondgrading[]" type="date"
+              class="form-control"
+              @if(!empty($newData) && $newData[1][0]!=null)
+             value="{{$newData[1][0]}}"
+            @endif
+            />
+            <label>To:</label>
+            <input name="secondgrading[]" type="date"
+            class="form-control"
+            @if(!empty($newData) && $newData[1][1]!=null)
+             value="{{$newData[1][1]}}"
+            @endif
+            />
+          </div>
+          </div>
+          <div  class="col mb-5">
+          <label>Third Grading</label>
+            <div
+            class="rows"
+            >
+            <label>From:</label>
+            <input name="thirdgrading[]" type="date"
+              class="form-control"
+              @if(!empty($newData) && $newData[2][0]!=null)
+             value="{{$newData[2][0]}}"
+            @endif
+            />
+            <label>To:</label>
+            <input name="thirdgrading[]" type="date"
+            class="form-control"     
+            @if(!empty($newData) && $newData[2][1]!=null)
+             value="{{$newData[2][1]}}"
+            @endif
+            />
+          </div>
+          </div>
+          <div  class="col mb*-5">
+          <label>Fourth Grading</label>
+            <div
+            class="rows"
+            >
+            <label>From:</label>
+            <input name="fourthgrading[]" type="date"
+              class="form-control"
+              @if(!empty($newData) && $newData[3][0]!=null)
+             value="{{$newData[3][0]}}"
+            @endif
+            />
+            <label>To:</label>
+            <input name="fourthgrading[]" type="date"
+            class="form-control"
+            @if(!empty($newData) && $newData[3][1]!=null)
+             value="{{$newData[3][1]}}"
+            @endif
+            />
+          </div>
+          </div>
+          <br>
+            <button class="form-control">
+              Submit
+            </button>
+         </form>
+        </div>
+      </div>
+    </main>
 
             <!-- ========= light and dark mode toggle button ======= -->
 

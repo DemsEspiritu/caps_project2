@@ -159,7 +159,7 @@
                       </div>
 
                       <div class="col-6">
-                        <div><label>Attach your Grade</label></div>
+                        <div><label>Attach File</label></div>
                       <label for="myfile">Select a file:</label>
                           <input type="file" id="file" name="file">
                           <span style="color:red; font-size:10px;">@error('file'){{ $message}} @enderror</span> 

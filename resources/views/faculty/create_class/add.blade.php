@@ -69,7 +69,7 @@
           <ul class="navbar-nav">
             <!-- SIDE BAR MENU -->
             <li>
-            <a href="/faculty/dashboard" class="nav-link active px-3 pt-3 mt-2">
+            <a href="/faculty/dashboard?schoolYear=2022-2023" class="nav-link active px-3 pt-3 mt-2">
                 <span class="me-2"><i class="fa-solid fa-chart-pie"></i></span>
                 <span>Dashboard</span></a>
 

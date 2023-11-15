@@ -202,25 +202,42 @@ static public function getStudentTeacher($studentID,$teacher_id){
        return $return;
 }
    
-   static public function getTeacherStudent($teacher_id)
-   {   
-
+   static public function getTeacherStudent($teacher_id){ 
        $return = self::select('users.*', 'class.name as class_name', 'class.section as class_section')
            ->join('class', 'class.class_id', '=', 'users.class_id')
            ->join('class_subject', 'class_subject.class_id', '=', 'users.class_id') /////
            ->where('class_subject.teacher_id', '=', $teacher_id)
-           ->where('users.user_type', '=', 3)
+           ->where('users.user_type', '=', 3)->distinct();
+       //     ->get();
            // ->groupBy('student_profile.student_profile_id')
-           ->get();
            
+       if(!empty(Request::get('lrn')))
+       {
+              $return = $return->where('lrn','like','%'.Request::get('lrn').'%');
+       }
 
+       if(!empty(Request::get('name')))
+       {      
+              
+              $return = $return->where('users.name','like','%'.Request::get('name').'%');
+       }
+
+       if(!empty(Request::get('class_name')))
+       {      
+              
+              $return = $return->where('class.class_name','like','%'.Request::get('class_name').'%');
+       }
+
+
+       $return = $return->orderBy('users.id','desc')
+       ->paginate(10);
+           
+       
        return $return;
 
    }
 
   
-
-
        static public function getSingle($id)
     {   
        
@@ -251,13 +268,7 @@ static public function getStudentTeacher($studentID,$teacher_id){
                            
        $return = $return->orderBy('users.id','desc')
        ->paginate(10);
-
-       
-      
            // ->groupBy('student_profile.student_profile_id')
-
-           
-
        return $return;
 }
 

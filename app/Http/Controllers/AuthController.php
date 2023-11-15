@@ -52,7 +52,7 @@ class AuthController extends Controller
             }
 
             if(Auth::user()->user_type == 4 ){
-                return redirect('faculty/dashboard');
+                return redirect('faculty/dashboard?schoolYear=2022-2023');
             }
 
             //return redirect('admin/dashboard');

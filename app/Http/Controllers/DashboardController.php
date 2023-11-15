@@ -19,7 +19,7 @@ class DashboardController extends Controller
                 $newData = array_map( function ($data){
                     return [$data->fromdate,$data->enddate];
                   },$syData);
-                
+                  
             }
             // $totalAdmin = getAdmin::count();
             // $totalFaculty = getFaculty::count();
@@ -36,7 +36,7 @@ class DashboardController extends Controller
             
             $gradingFilter = GradingLogModel::where('description','LIKE','%CURRENT%')->first();
             $sy = SchoolYearModel::all();
-           
+            
             if($gradingFilter!=null){
               $gradingFilter = $gradingFilter->description;
             }
@@ -67,7 +67,9 @@ class DashboardController extends Controller
         
         if(count($grading)!=0){
             $res = $req->all();
+            
             foreach ($grading as $key => $value) {
+                
                 if($res[$value->description][0]!=null&&$res[$value->description][1]!=null){
                     $value->fromdate= $res[$value->description][0];
                     $value->enddate = $res[$value->description][1];

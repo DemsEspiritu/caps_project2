@@ -120,13 +120,6 @@ class StudentController extends Controller
     }
 
 
-
-
-
-
-    
-
-
     public function grades_list($id)
     {    
 

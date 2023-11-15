@@ -28,20 +28,36 @@ class TotalGradesController extends Controller
     }
    
 
-
-
     public function addStudentGrades(Request $request){
       $req = $request->all();
       
       for ($i=0; $i < count($req['ids']); $i++) { 
         $totalGrades = TotalGrades::find($req['ids'][$i]);
-        $totalGrades->first_grading = $req['first_grading'][$i];
-        $totalGrades->second_grading = $req['second_grading'][$i];
-        $totalGrades->third_grading = $req['third_grading'][$i];
-        $totalGrades->fourth_grading = $req['fourth_grading'][$i];
-        $total = ($req['first_grading'][$i] + $req['second_grading'][$i] + $req['third_grading'][$i] +$req['fourth_grading'][$i]) / 4;
-        $totalGrades->final_grades = $total;
-        $totalGrades->passed_failed = $total >= 75 ? "PASSED" : "FAILED";
+        if(!empty($req['first_grading'][$i])){
+          $totalGrades->first_grading = $req['first_grading'][$i];
+        }
+        if(!empty($req['second_grading'][$i])){
+
+          $totalGrades->second_grading = $req['second_grading'][$i];
+        }
+        if(!empty($req['third_grading'][$i])){
+          $totalGrades->third_grading = $req['third_grading'][$i];
+
+        }
+        if(!empty($req['fourth_grading'][$i])){
+          $totalGrades->fourth_grading = $req['fourth_grading'][$i];
+
+        }
+        
+        if(!empty($totalGrades->first_grading) 
+        && !empty( $totalGrades->second_grading) &&
+          !empty( $totalGrades->third_grading) && !empty($totalGrades->fourth_grading)){
+          
+          $total = ($totalGrades->first_grading + $totalGrades->second_grading + $totalGrades->third_grading +$totalGrades->fourth_grading) / 4;
+          $totalGrades->final_grades = $total;
+          $totalGrades->passed_failed = $total >= 75 ? "PASSED" : "FAILED";
+        }
+
         $totalGrades->save();
       }
       notify()->success('Grade Successfully save!');
@@ -92,10 +108,9 @@ class TotalGradesController extends Controller
       
       $grades = DB::table('total_grades_sbujects')->join('subject', 'total_grades_sbujects.subject_id', '=', 'subject.subject_id')->where('users_id', $data['getStudentProfile']->id)->where('school_year_id',$data['getStudentProfile']->school_year_id)->get()->toArray();
 
-
       
 
-      $gradingFilter = GradingLogModel::where('school_year_id','=',2)->get();
+      $gradingFilter = GradingLogModel::where('school_year_id','=',$subjects[0]['school_year_id'])->get();
       $now = date('Y-m-d');
       $now=date('Y-m-d', strtotime($now));
       
@@ -104,13 +119,7 @@ class TotalGradesController extends Controller
             $gradingFilter = $value->description;
         }
      }
-     
-     
-   
-      //tryyy 
-
-
-   
+    
 
       if(!empty($data['getStudentProfile']))
       {
@@ -122,9 +131,6 @@ class TotalGradesController extends Controller
       }
 
     }
-
-
-
 
 
     public function add(Request $request, $id) {

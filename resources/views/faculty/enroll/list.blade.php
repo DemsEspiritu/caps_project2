@@ -43,7 +43,7 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="/faculty/dashboard" class="sidebar-link">
+                        <a href="/faculty/dashboard?schoolYear=2022-2023" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
                                Dashboard
                          </a>   
